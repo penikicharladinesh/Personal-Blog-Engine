@@ -10,6 +10,8 @@ A modern, highly optimized lightweight personal blogging platform tailored to sh
 This platform serves as a personal content distribution space engineered to render markdown-style technical logs dynamically. Integrated with client-side state handling operations, the system dynamically targets multi-category article arrays to enable lightning-fast content updates without complex structural overheads.
 
 ---
+<img width="1383" height="854" alt="Screenshot 2026-07-08 163617" src="https://github.com/user-attachments/assets/d29b1baa-d1e2-4a33-9b34-978e316476c1" />
+
 
 ## ⚡ Key Engineered Features
 - **Client-Side Theme Engine Layer:** Fully integrated independent dark-theme layer switching structural visibility configuration rules using functional runtime utility controls.
