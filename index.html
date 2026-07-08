@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Core Blog Engine | Theme Selection</title>
+    <!-- Tailwind CSS Script Elements Framework -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body id="app-body" class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen">
+
+    <!-- Top Navigation System Container Header Elements -->
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors p-4 sticky top-0 z-50">
+        <div class="container mx-auto max-w-5xl flex justify-between items-center">
+            <h1 class="text-xl font-black tracking-wider text-indigo-600 dark:text-indigo-400 font-mono">DINESH_BLOGS</h1>
+            
+            <div class="flex items-center gap-4">
+                <!-- Native Category Filters Selection Options Layout Controller -->
+                <select id="category-filter" onchange="filterBlogs()" class="border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 p-1.5 rounded-lg text-xs font-semibold focus:outline-indigo-500">
+                    <option value="all">All Categories</option>
+                    <option value="Tech">Technology</option>
+                    <option value="DSA">Algorithms & DSA</option>
+                    <option value="Cloud">Cloud Systems</option>
+                </select>
+
+                <!-- Light / Dark Mode Toggle Functional Engine Button -->
+                <button onclick="toggleThemeEngine()" class="bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 dark:text-slate-200 cursor-pointer shadow-sm hover:scale-105 transition-all">
+                    🌓 Toggle Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Active Feeds Layout Matrix -->
+    <main class="container mx-auto max-w-4xl p-6 md:p-10">
+        <header class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold tracking-tight md:text-4xl text-slate-950 dark:text-white">Engineering Insights Feed</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 font-medium">Systematic records mapping technical architectures and full-stack system optimization algorithms.</p>
+        </header>
+
+        <!-- Dynamic Content Insertion Wrapper Element -->
+        <section id="blog-posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Data components injected via layout renderer modules engine -->
+        </section>
+    </main>
+
+    <!-- Client Engine Scripts Data Configurations Processing Blocks -->
+    <script>
+        // Core Array Struct Data Arrays Models Representing Multi-Category Architecture
+        const blogDataFeed = [
+            { id: 1, category: "Tech", title: "Architecting Microservices with React.js Frameworks", excerpt: "Exploring reactive interface bindings state validation layers processing real-time pipelines layout structures optimization modules configurations systems.", author: "P. Dinesh Kumar", date: "July 2026" },
+            { id: 2, category: "DSA", title: "Asymptotic Runtime Engineering in Array Manipulation Queries", excerpt: "Analyzing algorithm efficiency scaling patterns tracking custom sorting pointers to bound performance parameters checks matrix evaluation structures.", author: "P. Dinesh Kumar", date: "June 2026" },
+            { id: 3, category: "Cloud", title: "Configuring Non-Relational Data Buckets via Relational Systems S3", excerpt: "Evaluating AWS analytical data pipelines storage structural parameters configuration loops across modern hybrid platforms schemas validations.", author: "P. Dinesh Kumar", date: "May 2026" },
+            { id: 4, category: "Tech", title: "Tailwind CSS Utility Engines Performance Metric Evaluators", excerpt: "Deep dive inspection of rendering paint times layout tracking compilation styles parameters optimization frameworks setup modules.", author: "P. Dinesh Kumar", date: "April 2026" }
+        ];
+
+        const postsGrid = document.getElementById('blog-posts-grid');
+
+        // Function Core Post Rendering Layout Matrix Processor Logic Systems
+        function renderBlogCards(postsArray) {
+            postsGrid.innerHTML = "";
+            
+            if(postsArray.length === 0) {
+                postsGrid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 font-medium">No matching topic feeds found in active parameters indexes.</div>`;
+                return;
+            }
+
+            postsArray.forEach(post => {
+                let badgeColor = post.category === "Tech" ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300" : post.category === "DSA" ? "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300" : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300";
+                
+                postsGrid.innerHTML += `
+                    <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm transition-all hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="${badgeColor} text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-md font-mono">${post.category}</span>
+                                <span class="text-slate-400 dark:text-slate-500 text-xs font-semibold">${post.date}</span>
+                            </div>
+                            <h3 class="text-slate-950 dark:text-white font-bold text-lg leading-snug tracking-wide mb-2">${post.title}</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed font-normal mb-4">${post.excerpt}</p>
+                        </div>
+                        <div class="border-t border-slate-100 dark:border-slate-800 pt-3 flex justify-between items-center">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-medium font-sans">By <span class="font-bold text-slate-700 dark:text-slate-300">${post.author}</span></span>
+                            <button onclick="readAnalytics('${post.title}')" class="text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline cursor-pointer bg-none border-none p-0">
+                                Read Analytics ➔
+                            </button>
+                        </div>
+                    </article>
+                `;
+            });
+        }
+
+        // Function Filtering Operations Action Logic Triggers
+        function filterBlogs() {
+            const selectedCategory = document.getElementById('category-filter').value;
+            if(selectedCategory === "all") {
+                renderBlogCards(blogDataFeed);
+            } else {
+                const targetDataset = blogDataFeed.filter(post => post.category === selectedCategory);
+                renderBlogCards(targetDataset);
+            }
+        }
+
+        // Updated manual injection parsing layout override execution metrics fixes
+        function toggleThemeEngine() {
+            const htmlElement = document.documentElement;
+            htmlElement.classList.toggle('dark');
+        }
+
+        // Function Read Analytics click handler
+        function readAnalytics(title) {
+            alert("Analyzing metrics for: " + title + "\\n\\nSystem Status: Operational\\nData Source: Locally Buffered Feed Node.");
+        }
+
+        // Run Default Boot Execution Sequences Initialization Configurations Engine
+        renderBlogCards(blogDataFeed);
+    </script>
+</body>
+</html>
